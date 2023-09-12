@@ -79,7 +79,6 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
   if(tree==NULL || key==NULL){
     return NULL;
   }
-
   TreeNode* current=tree->root;
 
   while(current!=NULL){
@@ -95,7 +94,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
       return current->pair;
     }
   }
-  return NULL;
+  
+  //return NULL;
 }
 
 
