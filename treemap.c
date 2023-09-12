@@ -51,7 +51,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   if(tree==NULL || key==NULL){
     return;
   }
-  insetTreeNode(&(tree->root),tree->lower_than,key,value);
+  insertTreeNode(&(tree->root),tree->lower_than,key,value);
 }
 
 TreeNode * minimum(TreeNode * x){
