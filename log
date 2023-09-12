@@ -117,3 +117,15 @@ treemap.c:54:7: error: unused variable ‘resultado’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 90c76cf
+Tue 12 Sep 2023 09:36:56 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:55:3: error: implicit declaration of function ‘insertTreeNode’; did you mean ‘insertTreeMap’? [-Werror=implicit-function-declaration]
+   55 |   insertTreeNode(&(tree->root),resultado,key,value);
+      |   ^~~~~~~~~~~~~~
+      |   insertTreeMap
+cc1: all warnings being treated as errors
+Compilation failed
+687abf7

@@ -52,7 +52,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     return;
   }
   int resultado = tree->lower_than(key,value);
-  insertTreeNode(&(tree->root),tree->resultado,key,value);
+  insertTreeNode(&(tree->root),resultado,key,value);
 }
 
 TreeNode * minimum(TreeNode * x){
