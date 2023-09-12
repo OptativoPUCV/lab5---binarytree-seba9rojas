@@ -83,7 +83,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
   newPair->key=key;
   newPair->value=value;
-  newNode->pair=newPair;
+  newNode->Pair=newPair;
   newNode->left = newNode->right = newNode->parent=NULL;
 
   if(parent==NULL){
