@@ -42,3 +42,33 @@ treemap.c:54:3: error: implicit declaration of function ‘insertTreeNode’; di
 cc1: all warnings being treated as errors
 Compilation failed
 e6cfe11
+Tue 12 Sep 2023 09:36:07 PM UTC: 
+ treemap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:54:19: error: ‘map’ undeclared (first use in this function)
+   54 |   int resultado = map->lower_than(key1,key2);
+      |                   ^~~
+treemap.c:54:19: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:54:35: error: ‘key1’ undeclared (first use in this function); did you mean ‘key’?
+   54 |   int resultado = map->lower_than(key1,key2);
+      |                                   ^~~~
+      |                                   key
+treemap.c:54:40: error: ‘key2’ undeclared (first use in this function); did you mean ‘key’?
+   54 |   int resultado = map->lower_than(key1,key2);
+      |                                        ^~~~
+      |                                        key
+treemap.c:55:3: error: implicit declaration of function ‘insertTreeNode’; did you mean ‘insertTreeMap’? [-Werror=implicit-function-declaration]
+   55 |   insertTreeNode(&(tree->root),tree->resultado,key,value);
+      |   ^~~~~~~~~~~~~~
+      |   insertTreeMap
+treemap.c:55:36: error: ‘TreeMap’ has no member named ‘resultado’
+   55 |   insertTreeNode(&(tree->root),tree->resultado,key,value);
+      |                                    ^~
+treemap.c:54:7: error: unused variable ‘resultado’ [-Werror=unused-variable]
+   54 |   int resultado = map->lower_than(key1,key2);
+      |       ^~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+5d71d5e
