@@ -49,52 +49,6 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-  if(tree==NULL || key==NULL){
-    return;
-  }
-
-  TreeNode* newNode=(TreeNode*)malloc(sizeof(TreeNode));
-  if(newNode==NULL){
-    return;
-  }
-  
-  newNode->key=key;
-  newNode->value=value;
-  newNode->left = newNode->right = newNode->parent=NULL;
-
-  if(tree->root==NULL){
-    tree->root=newNode;
-    return;
-  }
-  TreeNode* current = tree->root;
-  TreeNode* parent = NULL;
-
-  while (current != NULL) {
-    parent = current;
-    int cmp = tree->lower_than(key, current->key);
-
-    if (cmp < 0) {
-      current = current->left;
-    } else if (cmp > 0) {
-      current = current->right;
-    } else {
-      free(newNode); 
-      return;
-    }
-  }
-    
-  if (parent == NULL) {
-    tree->root = newNode;
-  } else {
-    int cmp = tree->lower_than(key, parent->key);
-    if (cmp < 0) {
-      parent->left = newNode;
-    } else {
-      parent->right = newNode;
-    }
-    newNode->parent = parent;
-  }
-  
 }
   
 
@@ -121,8 +75,27 @@ void eraseTreeMap(TreeMap * tree, void* key){
 
 
 
-Pair * searchTreeMap(TreeMap * tree, void* key) {
+Pair * searchTreeMap(TreeMap * tree, void* key){
+  if(tree==NULL || key==NULL){
     return NULL;
+  }
+
+  TreeNode* current=tree->root;
+
+  while(current!=NULL){
+    int cmp=tree->lower_than(key,current->pair->key);
+
+    if(cmp<0){
+      current=current->left;
+    }
+    else if (cmp>0) {
+      current=current->right;
+    }
+    else{
+      return current->pair;
+    }
+  }
+  return NULL;
 }
 
 
