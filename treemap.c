@@ -82,15 +82,16 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
   while(current!=NULL){
     int cmp=tree->lower_than(key,current->pair->key);
 
-    if(cmp<0){
-      current=current->left;
+    if(cmp==0){
+      tree->current=current;
+      return current->pair;
     }
     else if(cmp>0) {
       current=current->right;
     }
     else{
-      tree->current=current;
-      return current->pair;
+      current=current->left
+      
     }
   }
   
