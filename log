@@ -224,3 +224,13 @@ treemap.c:94:11: error: assignment to ‘TreeMap *’ from incompatible pointer 
 cc1: all warnings being treated as errors
 Compilation failed
 7f7fad4
+Tue 12 Sep 2023 10:27:02 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:94:19: error: ‘TreeNode’ has no member named ‘current’
+   94 |       tree=current->current;
+      |                   ^~
+Compilation failed
+2bf0f80
