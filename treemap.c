@@ -5,7 +5,6 @@
 
 typedef struct TreeNode TreeNode;
 
-
 struct TreeNode {
     Pair* pair;
     TreeNode * left;
@@ -79,6 +78,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
   if(tree==NULL || key==NULL){
     return NULL;
   }
+  
   TreeNode* current=tree->root;
 
   while(current!=NULL){
@@ -87,7 +87,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
     if(cmp<0){
       current=current->left;
     }
-    else if (cmp>0) {
+    else if(cmp>0) {
       current=current->right;
     }
     else{
@@ -95,7 +95,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
       return current->pair;
     }
   }
-  tree->current=NULL;
+  
+  //tree->current=NULL;
   return NULL;
 }
 
