@@ -77,6 +77,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 
   Pair* newPair=(Pair*)malloc(sizeof(Pair));
   if(newPair==NULL){
+    free(newNode);
     return;
   }
 
