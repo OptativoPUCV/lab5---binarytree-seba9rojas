@@ -376,3 +376,9 @@ treemap.c:89:23: error: ‘TreeMap’ has no member named ‘compare’
       |                       ^~
 Compilation failed
 3a0f030
+Wed 13 Sep 2023 11:02:53 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  6|6
+total_score: 5/70
+7a8e679
