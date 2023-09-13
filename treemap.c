@@ -62,7 +62,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     TreeNode* current = tree->root;
 
     while (current != NULL) {
-        int cmp = tree->compare(key, &current->pair->key);
+        int cmp = tree->lower_than(key, &current->pair->key);
 
         if (cmp == 0 || is_equal(tree, key, &current->pair->key) == 1) {
             free(new_node);
