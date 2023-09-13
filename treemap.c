@@ -73,7 +73,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
           tree->current = tree->current->right ;
           return;
         }
-        tree->curret = tree->current->right;
+        tree->current = tree->current->right;
       }
   }
   if (tree -> root == NULL){
