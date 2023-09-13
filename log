@@ -353,3 +353,16 @@ Wed 13 Sep 2023 10:58:48 PM UTC:
  tests:  8|6
 total_score: 5/70
 542ac2c
+Wed 13 Sep 2023 11:02:09 PM UTC: 
+ treemap.c | 15 +++++++--------
+ 1 file changed, 7 insertions(+), 8 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:80:43: error: ‘TreeMap’ has no member named ‘compare’
+   80 |    if (tree == NULL || key == NULL || tree->compare == NULL) {
+      |                                           ^~
+treemap.c:89:23: error: ‘TreeMap’ has no member named ‘compare’
+   89 |         int cmp = tree->compare(key, &current->pair->key);
+      |                       ^~
+Compilation failed
+a6d31d7
