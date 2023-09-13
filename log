@@ -487,3 +487,22 @@ treemap.c:127:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 76ae840
+Wed 13 Sep 2023 11:59:39 PM UTC: 
+ treemap.c | 50 ++++++++++++++++++++++++++------------------------
+ 1 file changed, 26 insertions(+), 24 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:65:23: error: ‘TreeMap’ has no member named ‘compare’
+   65 |         int cmp = tree->compare(key, &current->pair->key);
+      |                       ^~
+treemap.c:68:18: error: ‘new_node’ undeclared (first use in this function)
+   68 |             free(new_node);
+      |                  ^~~~~~~~
+treemap.c:68:18: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:129:1: error: control reaches end of non-void function [-Werror=return-type]
+  129 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+f079b58

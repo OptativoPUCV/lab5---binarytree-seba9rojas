@@ -48,39 +48,41 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-  TreeNode * new;
-  tree->current = tree->root;
-  while (tree->current != NULL){
-    if (tree->lower_than(key,tree -> current -> pair -> key) == 1){
-      if (tree->current->left == NULL)
-        {
-          new = createTreeNode(key, value);
-          tree->current->left = new;
-          new->parent = tree->current;
-          tree->current = tree->current->left;
-          return;
-        }
-        tree -> current = tree -> current -> left;
-      }
-      else if(is_equal(tree, key,tree->current->pair->key) == 1){
+  TreeNode* new = createTreeNode(key, value); 
+
+  if (new == NULL) {
+        return; 
+  }
+
+  if (tree->root == NULL) {
+        tree->root = new;
         return;
-        
-      } else{
-        if (tree->current->right == NULL){
-          new = createTreeNode(key, value);
-          tree->current->right = new;
-          new->parent = tree->current;
-          tree->current = tree->current->right ;
-          return;
+  }
+
+    TreeNode* current = tree->root;
+
+    while (current != NULL) {
+        int cmp = tree->compare(key, &current->pair->key);
+
+        if (cmp == 0 || is_equal(tree, key, &current->pair->key) == 1) {
+            free(new_node);
+            return;
+        } else if (cmp < 0) {
+            if (current->left == NULL) {
+                current->left = new;
+                new->parent = current;
+                return;
+            }
+            current = current->left;
+        } else {
+            if (current->right == NULL) {
+                current->right = new;
+                new->parent = current;
+                return;
+            }
+            current = current->right;
         }
-        tree->current = tree->current->right;
-      }
-  }
-  if (tree -> root == NULL){
-    new = createTreeNode(key, value);
-    tree -> root = new;
-    return;
-  }
+    }
 }
 
 TreeNode * minimum(TreeNode * x){
