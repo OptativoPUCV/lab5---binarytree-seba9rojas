@@ -60,9 +60,7 @@ TreeNode * minimum(TreeNode * x){
     x=x->left;
   }
   return x;
-
 }
-
 
 void removeNode(TreeMap * tree, TreeNode* node) {
 
@@ -86,7 +84,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
   TreeNode* current=tree->root;
 
   while(current!=NULL){
-    int cmp=tree->lower_than(key,current->pair->key);
+    int cmp=tree->lower_than(key,current->key);
 
     if(cmp==0){
       tree->current=current;
@@ -97,14 +95,12 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
     }
     else{
       current=current->left;
-      
     }
   }
   
   tree->current=NULL;
   return NULL;
 }
-
 
 Pair * upperBound(TreeMap * tree, void* key) {
     return NULL;
