@@ -99,13 +99,18 @@ Pair * upperBound(TreeMap * tree, void* key) {
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
-  if(tree==NULL|| tree->root==NULL){
-    return NULL;
+  if(tree == NULL || tree-> root == NULL) return NULL;
+
+  TreeNode* actual = tree->root;
+
+  while (actual->left != NULL)
+  {
+    actual = actual->left;
   }
-  TreeNode* minimo=minium(tree->root);
-  tree->current=minimo;
-  return minimo->pair;
   
+  tree->current = actual;
+  
+  return actual->pair;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
