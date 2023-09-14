@@ -875,3 +875,20 @@ treemap.c:134:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 0b2c511
+Thu 14 Sep 2023 02:48:42 AM UTC: 
+ treemap.c | 1 -
+ 1 file changed, 1 deletion(-)
+In file included from test.c:4:
+treemap.c:93:12: error: redefinition of ‘minimum’
+   93 | TreeNode * minimum(TreeNode * x){
+      |            ^~~~~~~
+treemap.c:83:12: note: previous definition of ‘minimum’ was here
+   83 | TreeNode * minimum(TreeNode * x){
+      |            ^~~~~~~
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:134:1: error: control reaches end of non-void function [-Werror=return-type]
+  134 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+292b03f
