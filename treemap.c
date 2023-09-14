@@ -48,7 +48,47 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-}  
+  TreeNode* actual = tree->root;
+  TreeNode* nuevoHijo = NULL;
+  while (actual != NULL) 
+  {
+    nuevoHijo = actual;
+    if (is_equal(tree, key, actual->pair->key))
+    {
+      return;
+    } else if (tree->lower_than(key, actual->pair->key)) 
+    {
+      actual = actual->left;
+    } else {
+        actual = actual->right;
+    }
+  }
+
+  TreeNode* nodito = createTreeNode(key, value);
+
+  nodito->parent = nuevoHijo;
+  if (nuevoHijo == NULL) {
+        tree->root = nodito;
+  } else if (tree->lower_than(key, nuevoHijo->pair->key)) 
+    {
+        nuevoHijo->left = nodito;
+    } else 
+    {
+      nuevoHijo->right = nodito;
+    }
+  
+  tree->current = nodito;
+}
+
+TreeNode * minimum(TreeNode * x){
+if (x == NULL) return NULL; 
+  while (x->left != NULL) 
+  { 
+       x = x->left;
+  }
+  return x;
+}
+
 
 TreeNode * minimum(TreeNode * x){
   if(x==NULL){
@@ -80,7 +120,6 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
   }
 
   while (tree->current != NULL){
-    
     if (is_equal(tree, key, tree->current->pair->key) == 1){
       break;
     }
@@ -99,46 +138,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
-  if(tree == NULL || tree-> root == NULL) return NULL;
-
-  TreeNode* actual = tree->root;
-
-  while (actual->left != NULL)
-  {
-    actual = actual->left;
-  }
-  
-  tree->current = actual;
-  
-  return actual->pair;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
-  if(tree == NULL || tree-> current == NULL) return NULL;
-  
-  TreeNode* actual = tree->current;
-  
-  if(actual ->right != NULL)
-  {
-    actual = actual->right;
-    
-    while(actual->left !=NULL)
-    {
-       actual = actual->left;   
-    }    
-  }else{
-    TreeNode* tata = actual->parent;
-    
-    while (tata != NULL && actual == tata->right)
-    {
-      actual = tata;
-      tata = tata->parent;
-    }
-
-    actual = tata;
-  }
-  
-  tree->current = actual;
-  
-  return (actual != NULL) ? actual->pair : NULL;
 }
