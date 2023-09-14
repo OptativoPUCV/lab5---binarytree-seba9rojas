@@ -1154,3 +1154,25 @@ treemap.c:134:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 69f3438
+Thu 14 Sep 2023 07:00:00 PM UTC: 
+ treemap.c | 1 +
+ 1 file changed, 1 insertion(+)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:91:10: error: ‘return’ with a value, in function returning void [-Werror=return-type]
+   91 |   return NULL;
+      |          ^~~~
+treemap.c:50:6: note: declared here
+   50 | void insertTreeMap(TreeMap * tree, void* key, void * value) {
+      |      ^~~~~~~~~~~~~
+treemap.c: In function ‘firstTreeMap’:
+treemap.c:146:10: error: returning ‘Pair **’ from a function with incompatible return type ‘Pair *’ [-Werror=incompatible-pointer-types]
+  146 |   return &(aux->pair);
+      |          ^~~~~~~~~~~~
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:135:1: error: control reaches end of non-void function [-Werror=return-type]
+  135 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+ec2d03f
