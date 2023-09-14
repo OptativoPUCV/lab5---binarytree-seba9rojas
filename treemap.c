@@ -125,8 +125,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
     }
     if (tree->lower_than(key, tree->current->pair->key)== 1 ){
             tree->current = tree->current->left;
-    }  else{
-            tree->current = tree->current->right;
+    } else{
+      tree->current = tree->current->right;
     }
     return tree->current->pair;
   }
@@ -136,14 +136,18 @@ Pair* upperBound(TreeMap * tree, void* key) {
     return NULL;
 }
 
-Pair * firstTreeMap(TreeMap * tree) {
-  TreeNode* aux = tree->root;
-  while (aux->left != NULL) {
-    aux = aux->left;
-  }
-  return aux->pair;
-}
 
+
+Pair * firstTreeMap(TreeMap * tree){
+  if(tree==NULL|| tree->root==NULL){
+    return NULL;
+  }
+  TreeNode* current=tree->root;
+  while(current->left!=NULL){
+    current=current->left
+  }
+  return current->pair
+}
 Pair * nextTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->root == NULL || tree->current == NULL) return NULL;
     
