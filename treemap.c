@@ -65,7 +65,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         int cmp = tree->lower_than(key, &current->pair->key);
 
         if (cmp == 0 || is_equal(tree, key, &current->pair->key) == 1) {
-            free(new_node);
+            
             return;
         } else if (cmp < 0) {
             if (current->left == NULL) {
