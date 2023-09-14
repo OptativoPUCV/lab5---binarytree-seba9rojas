@@ -48,36 +48,36 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-  TreeNode* actual = tree->root;
-  TreeNode* nuevoHijo = NULL;
-  while (actual != NULL) 
-  {
-    nuevoHijo = actual;
-    if (is_equal(tree, key, actual->pair->key))
-    {
-      return;
-    } else if (tree->lower_than(key, actual->pair->key)) 
-    {
-      actual = actual->left;
-    } else {
-        actual = actual->right;
+  if (!tree->root){
+    tree->root = createTreeNode(key,value);
+  }
+  else{
+    tree->current = tree->root;
+    while (tree->current){
+      
+      if (is_equal(tree,tree->current->pair->key,key)){
+        return;
+      }
+      if (tree->lower_than(tree->current->pair->key,key)){
+        if (!tree->current->right){
+          tree->current->right = createTreeNode(key,value);
+          tree->current->right->parent = tree->current;
+          tree->current = tree->current->right;
+          return;
+        }
+        tree->current = tree->current->right;
+      }
+      else{
+        if (!tree->current->left){
+          tree->current->left = createTreeNode(key,value);
+          tree->current->left->parent = tree->current;
+          tree->current = tree->current->left;
+          return;
+        }
+        tree->current = tree->current->left;
+      }
     }
   }
-
-  TreeNode* nodito = createTreeNode(key, value);
-
-  nodito->parent = nuevoHijo;
-  if (nuevoHijo == NULL) {
-        tree->root = nodito;
-  } else if (tree->lower_than(key, nuevoHijo->pair->key)) 
-    {
-        nuevoHijo->left = nodito;
-    } else 
-    {
-      nuevoHijo->right = nodito;
-    }
-  
-  tree->current = nodito;
 }
 
 TreeNode * minimum(TreeNode * x){
