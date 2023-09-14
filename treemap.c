@@ -51,7 +51,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
   TreeNode *Nodo = createTreeNode(key, value);
   TreeNode *Aux;
   
-  searchTreeMa(tree, key);
+  searchTreeMap(tree, key);
   
   Aux = tree->current;
   Nodo->parent = Aux;
