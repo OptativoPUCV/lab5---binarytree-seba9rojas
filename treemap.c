@@ -144,9 +144,9 @@ Pair * firstTreeMap(TreeMap * tree){
   }
   TreeNode* current=tree->root;
   while(current->left!=NULL){
-    current=current->left
+    current=current->left;
   }
-  return current->pair
+  return current->pair;
 }
 Pair * nextTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->root == NULL || tree->current == NULL) return NULL;
