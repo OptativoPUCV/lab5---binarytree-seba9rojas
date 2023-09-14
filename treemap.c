@@ -138,16 +138,10 @@ Pair * upperBound(TreeMap * tree, void* key) {
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
-  tree->current = tree->root;
-
-  while (tree->current->left != NULL){
-    tree->current = tree->current->left;
-  }
-  return tree->current->pair;
+  TreeNode* aux = minimum(tree->root);
+  Pair* min = aux->pair;
+  return min;
 }
-
-
-
 
 Pair * nextTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->root == NULL || tree->current == NULL) return NULL;
