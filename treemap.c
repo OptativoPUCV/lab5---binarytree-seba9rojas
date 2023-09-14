@@ -99,7 +99,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
-  TreeNode* nodo=(TreeNode*)calloc(1,sizeof(TreeNode));
+  TreeNode* nodo=(TreeNode)calloc(1,sizeof(TreeNode));
   nodo=tree->root;
   if(tree==NULL|| tree->root==NULL){
     return NULL;
@@ -108,7 +108,7 @@ Pair * firstTreeMap(TreeMap * tree) {
   while(nodo->left!=NULL){
     nodo=nodo->left;
   }
-  return node->pair;
+  return nodo->pair;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
