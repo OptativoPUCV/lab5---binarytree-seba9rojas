@@ -109,5 +109,27 @@ Pair * firstTreeMap(TreeMap * tree) {
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
+  if (tree == NULL || tree->current == NULL) {
+        return NULL;
+    }
+
+    TreeNode* current = tree->current;
+
+  if (current->right != NULL) {
+        tree->current = minimum(current->right);
+        return tree->current->pair;
+  }
+
+  while (current->parent != NULL && current->parent->right == current) {
+        current = current->parent;
+  }
+
+  if (current->parent != NULL) {
+        tree->current = current->parent;
+        return current->parent->pair;
+  } else {
+        tree->current = NULL;
+        return NULL;
+  }
     return NULL;
 }
