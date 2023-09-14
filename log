@@ -566,3 +566,23 @@ treemap.c:124:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 99ee230
+Thu 14 Sep 2023 02:05:04 AM UTC: 
+ treemap.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:58:17: error: ‘newNode’ undeclared (first use in this function); did you mean ‘new_node’?
+   58 |                 newNode->parent = current;
+      |                 ^~~~~~~
+      |                 new_node
+treemap.c:58:17: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:57:27: error: unused variable ‘new_node’ [-Werror=unused-variable]
+   57 |                 TreeNode* new_node = createTreeNode(key, value);
+      |                           ^~~~~~~~
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:124:1: error: control reaches end of non-void function [-Werror=return-type]
+  124 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+d9d1246
