@@ -666,3 +666,23 @@ treemap.c:95:1: error: control reaches end of non-void function [-Werror=return-
 cc1: all warnings being treated as errors
 Compilation failed
 a8c030f
+Thu 14 Sep 2023 02:28:59 AM UTC: 
+ treemap.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘firstTreeMap’:
+treemap.c:107:20: error: implicit declaration of function ‘minium’; did you mean ‘minimum’? [-Werror=implicit-function-declaration]
+  107 |   TreeNode* minimo=minium(tree->root);
+      |                    ^~~~~~
+      |                    minimum
+treemap.c:107:20: error: initialization of ‘TreeNode *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+treemap.c:102:13: error: variable ‘nodo’ set but not used [-Werror=unused-but-set-variable]
+  102 |   TreeNode* nodo=(TreeNode*)calloc(1,sizeof(TreeNode));
+      |             ^~~~
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:95:1: error: control reaches end of non-void function [-Werror=return-type]
+   95 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+19e703d

@@ -104,11 +104,10 @@ Pair * firstTreeMap(TreeMap * tree) {
   if(tree==NULL|| tree->root==NULL){
     return NULL;
   }
+  TreeNode* minimo=minium(tree->root);
+  tree->current=minimo;
+  return minimo->pair;
   
-  while(nodo->left!=NULL){
-    nodo=nodo->left;
-  }
-  return nodo->pair;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
