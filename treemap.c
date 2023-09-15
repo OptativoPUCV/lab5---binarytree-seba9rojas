@@ -207,7 +207,7 @@ Pair * firstTreeMap(TreeMap * tree){
 
 
 Pair * nextTreeMap(TreeMap * tree) {
-  TreeNode * aux = tree -> current
+  TreeNode * aux = tree -> current;
   if(tree -> current == NULL) return NULL;
   if (aux -> right == NULL){
     while (aux -> parent != NULL){
