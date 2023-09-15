@@ -1859,3 +1859,21 @@ treemap.c:51:13: error: unused variable ‘current’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 f148201
+Fri 15 Sep 2023 08:54:45 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:60:9: error: ‘new’ undeclared (first use in this function)
+   60 |         new=createTreeNode(key,value);
+      |         ^~~
+treemap.c:60:9: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:52:13: error: unused variable ‘newNode’ [-Werror=unused-variable]
+   52 |   TreeNode* newNode=createTreeNode(key,value);
+      |             ^~~~~~~
+treemap.c:51:13: error: unused variable ‘current’ [-Werror=unused-variable]
+   51 |   TreeNode* current=tree->root;
+      |             ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+8b37a66
