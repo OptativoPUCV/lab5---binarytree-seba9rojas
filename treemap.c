@@ -149,18 +149,7 @@ Pair* upperBound(TreeMap * tree, void* key) {
 }
   
 Pair * firstTreeMap(TreeMap * tree){
-  if(tree == NULL || tree-> root == NULL){
-    return NULL;
-  }
-  
-  TreeNode* aux = tree->root;
-  tree->current=minium(aux);
-  
-  if(tree->current==NULL){
-    return NULL;
-  }
-  
-  return tree->current->pair;
+  return NULL;
 }
 
 
