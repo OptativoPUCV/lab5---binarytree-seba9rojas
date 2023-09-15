@@ -1904,3 +1904,9 @@ treemap.c:59:23: error: ‘newNod’ undeclared (first use in this function); di
 treemap.c:59:23: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 488ab6f
+Fri 15 Sep 2023 08:59:48 PM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  27|1
+total_score: 60/70
+2686960

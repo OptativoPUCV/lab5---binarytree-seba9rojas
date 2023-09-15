@@ -55,8 +55,8 @@ void insertTreeMap(TreeMap * tree, void* key, void * value){
     if(is_equal(tree, key, current->pair->key)){
       return;
     }else if(tree->lower_than(key, current->pair->key)){
-      if (current->left==NULL){
-        current->left=newNod;
+      if (current->left!=NULL){
+        current->left=newNode;
         newNode->parent=current;
         tree->current=newNode;
         return;
