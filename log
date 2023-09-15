@@ -1770,3 +1770,19 @@ treemap.c:173:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 c8822bb
+Fri 15 Sep 2023 08:20:21 PM UTC: 
+ treemap.c | 72 ++++++++++++++++++++++++++-------------------------------------
+ 1 file changed, 30 insertions(+), 42 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:96:37: error: ‘TreeNode’ has no member named ‘righ’; did you mean ‘right’?
+   96 |     if (node->left == NULL && node->righ == NULL) {
+      |                                     ^~~~
+      |                                     right
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:161:1: error: control reaches end of non-void function [-Werror=return-type]
+  161 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+d2c45eb
