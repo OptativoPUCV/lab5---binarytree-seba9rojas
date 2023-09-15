@@ -90,47 +90,59 @@ TreeNode * minimum(TreeNode * x){
 }
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-    if (tree == NULL || node == NULL) return;
-
-    // Caso 1: Nodo sin hijos
-    if (node->left == NULL && node->right == NULL) {
-        if (node->parent != NULL) {
-            if (node->parent->left == node) {
-                node->parent->left = NULL;
-            } else {
-                node->parent->right = NULL;
-            }
-        } else {
-            // El nodo es la raíz del árbol
-            tree->root = NULL;
-        }
-        free(node->pair);
-        free(node);
+  if (node -> left == NULL && node -> right == NULL)
+  {
+    if (node == node -> parent -> left)
+    {
+      node -> parent -> left = NULL;
+      free(node);
     }
-    // Caso 2: Nodo con un hijo
-    else if (node->left == NULL || node->right == NULL) {
-        TreeNode* child = (node->left != NULL) ? node->left : node->right;
-        if (node->parent != NULL) {
-            if (node->parent->left == node) {
-                node->parent->left = child;
-            } else {
-                node->parent->right = child;
-            }
-            child->parent = node->parent;
-        } else {
-            // El nodo es la raíz del árbol
-            tree->root = child;
-            child->parent = NULL;
-        }
-        free(node->pair);
-        free(node);
+    else
+    {
+      node -> parent -> right = NULL;
+      free(node);
     }
-    // Caso 3: Nodo con dos hijos
-    else {
-        TreeNode* successor = minimum(node->right); // Obtener el sucesor in-order
-        node->pair = successor->pair; // Copiar los datos del sucesor al nodo actual
-        removeNode(tree, successor); // Eliminar el sucesor recursivamente
+    return;
+  }
+  else if (node -> left != NULL && node -> right != NULL)
+  {
+    TreeNode* aux = minimum(node -> right);
+    node -> pair = aux -> pair;
+    removeNode(tree, aux);
+    return;
+  }  
+  else if (node -> left != NULL && node -> right == NULL)
+  {
+    if (node == node -> parent -> left)
+    {
+      node -> parent -> left = node -> left;
+      node -> left -> parent = node -> parent;
+      free(node);
     }
+    else
+    {
+      node -> parent -> right = node -> left;
+      node -> left -> parent = node -> parent;
+      free(node);
+    }
+    return;
+  }
+  else
+  {
+    if (node == node -> parent -> left)
+    {
+      node -> parent -> left = node -> right;
+      node -> right -> parent = node -> parent;
+      free(node);
+    }
+    else
+    {
+      node -> parent -> right = node -> right;
+      node -> right -> parent = node -> parent;
+      free(node);
+    }
+    return;
+  } 
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
