@@ -1939,3 +1939,9 @@ treemap.c:234:14: error: ‘tat’ undeclared (first use in this function); did 
 treemap.c:234:14: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 dfe5da5
+Fri 15 Sep 2023 09:05:09 PM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  24|1
+total_score: 55/70
+0abb030

@@ -231,10 +231,10 @@ Pair * nextTreeMap(TreeMap * tree) {
       tata = tata->parent;
     }
 
-    actual = tat;
+    actual = tata;
   }
   
   tree->current = actual;
   
-  return (actual != NULL) ? actual->pair : NULL;
+  return (actual == NULL) ? actual->pair : NULL;
 }
