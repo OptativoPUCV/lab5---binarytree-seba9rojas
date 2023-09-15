@@ -94,8 +94,31 @@ Pair * searchTreeMap(TreeMap * tree, void* key){
 }
 
 Pair* upperBound(TreeMap * tree, void* key) {
+  TreeNode* current = tree->root;
+  TreeNode* ub_node = NULL;
+  
+  while (current != NULL) 
+  {
+    if (is_equal(tree, current->pair->key, key)) 
+    {
+      return current->pair;
+    } else if (tree->lower_than(key, current->pair->key)) {
+      ub_node = current;
+      current = current->left;
+    } else {
+      current = current->right;
+    }
+  }
+  
+  if (ub_node == NULL) 
+  {      
     return NULL;
+  } else {
+      return ub_node->pair;
+  }
+  
 }
+  
 
 
 
