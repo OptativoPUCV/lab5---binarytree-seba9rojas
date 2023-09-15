@@ -231,7 +231,7 @@ Pair * nextTreeMap(TreeMap * tree) {
       tata = tata->parent;
     }
 
-    actual = tata;
+    actual = tat;
   }
   
   tree->current = actual;

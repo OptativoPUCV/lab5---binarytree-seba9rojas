@@ -1927,3 +1927,15 @@ Fri 15 Sep 2023 09:00:07 PM UTC:
  tests:  29|0
 total_score: 70/70
 97e3cbb
+Fri 15 Sep 2023 09:04:58 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:234:14: error: ‘tat’ undeclared (first use in this function); did you mean ‘tata’?
+  234 |     actual = tat;
+      |              ^~~
+      |              tata
+treemap.c:234:14: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+dfe5da5
