@@ -48,45 +48,43 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-  TreeNode* aux = tree->root;
-  
-  if (tree->root == NULL){
-    aux = createTreeNode(key, value);
-    tree->root = aux;
-    tree->current = aux;
-  }
-  
-  while(aux->left != NULL && aux->right != NULL){
-    
-    if (tree->lower_than(aux->pair->key,key) == 1){
-      aux = aux->left;
-      
-    }else{
-      if(tree->lower_than(aux->pair->key, key) == 1){
-        aux = aux->right;
-        
-      }else{
+    TreeNode* new_node = createTreeNode(key, value);
+    if (new_node == NULL) {
         return;
-      }
-      tree->current = aux;
     }
 
-  }
-    tree->current = aux;
-    
-    if(aux->left == NULL || aux->right == NULL){
-      aux = createTreeNode(key, value);
-      aux->parent = tree->current->parent;
-      
-      if(tree->lower_than(key, aux->parent->pair->key) == 1){
-        aux->parent->left = aux;
-        
-      }else{
-        aux->parent->right = aux;
-      }
-      
-      tree->current = aux;
-      return;
+    if (tree->root == NULL) {
+        tree->root = new_node;
+        tree->current = new_node;
+    } else {
+        TreeNode* current = tree->root;
+
+        while (1) {
+            int cmp = tree->lower_than(key, current->pair->key);
+
+            if (cmp < 0) {
+                if (current->left == NULL) {
+                    current->left = new_node;
+                    new_node->parent = current;
+                    break;
+                } else {
+                    current = current->left;
+                }
+            } else if (cmp > 0) {
+                if (current->right == NULL) {
+                    current->right = new_node;
+                    new_node->parent = current;
+                    break;
+                } else {
+                    current = current->right;
+                }
+            } else {
+                free(new_node->pair); 
+                free(new_node);       
+                return;               
+            }
+        }
+        tree->current = new_node;
     }
 }
   
