@@ -205,7 +205,7 @@ Pair * firstTreeMap(TreeMap * tree){
 
   while (actual->left != NULL)
   {
-    actual = actual->left;
+    actual = actu->left;
   }
   tree->current = actual;
   return actual->pair;
