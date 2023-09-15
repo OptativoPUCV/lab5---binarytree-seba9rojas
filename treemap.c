@@ -47,36 +47,49 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 }
 
 
+
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-    if (tree == NULL) return;
-    
-    TreeNode * aux = tree->root;
-    TreeNode * parent = NULL;
-    
-    while (aux != NULL) {
-        parent = aux;
-        
-        if (tree->lower_than(key,aux->pair->key)) {
-            aux = aux->left;
-        } else if (tree->lower_than(aux->pair->key,key)) {
-            aux = aux->right;
-        } else {
-            return;
+    Pair* pair = (Pair*)malloc(sizeof(Pair));
+    if (pair == NULL) {
+        exit(1);
+    }
+    pair->key = key;
+    pair->value = value;
+
+    if (tree->root == NULL) {
+        struct TreeNode* newNode = createTreeNode(pair);
+        tree->root = newNode;
+        tree->current = newNode;
+    } else {
+        struct TreeNode* currentNode = tree->root;
+        while (1) {
+            int cmp = tree->lower_than(pair->key, currentNode->pair->key);
+            if (cmp < 0) {
+                if (currentNode->left == NULL) {
+                    struct TreeNode* newNode = createTreeNode(pair);
+                    currentNode->left = newNode;
+                    newNode->parent = currentNode;
+                    tree->current = newNode;
+                    break;
+                } else {
+                    currentNode = currentNode->left;
+                }
+            } else if (cmp > 0) {
+                if (currentNode->right == NULL) {
+                    struct TreeNode* newNode = createTreeNode(pair);
+                    currentNode->right = newNode;
+                    newNode->parent = currentNode;
+                    tree->current = newNode;
+                    break;
+                } else {
+                    currentNode = currentNode->right;
+                }
+            } else {
+                // La clave ya existe, no hacemos nada.
+                break;
+            }
         }
     }
-    
-    TreeNode * new = createTreeNode(key, value);
-    
-    new->parent = parent;
-    
-    if (parent == NULL) {
-        tree->root = new;
-    } else if (tree->lower_than(key,parent->pair->key)) {
-        parent->left = new;
-    } else {
-        parent->right = new;
-    }
-    tree->current = new;
 }
   
 TreeNode * minimum(TreeNode * x){
