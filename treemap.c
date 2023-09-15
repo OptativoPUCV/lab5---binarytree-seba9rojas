@@ -131,16 +131,17 @@ Pair* upperBound(TreeMap * tree, void* key) {
 
 
 Pair * firstTreeMap(TreeMap * tree){
-    if (tree == NULL || tree->root == NULL) return NULL;
-    
-    TreeNode * aux = tree->root;
-    
-    tree->current = minimum(aux);
-    
-    if (tree->current == NULL) return NULL;
-    
-    return tree->current->pair;
+  TreeNode* nodo = (TreeNode*) calloc (1, sizeof(TreeNode));
+  nodo = tree -> root;
+  if (tree == NULL || tree -> root == NULL) return NULL;
+  while (nodo -> left != NULL)
+  {
+    nodo= nodo -> left;
+  }
+  return nodo -> pair;
 }
+
+
 Pair * nextTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->root == NULL || tree->current == NULL) return NULL;
     
