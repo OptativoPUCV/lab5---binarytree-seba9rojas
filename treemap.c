@@ -115,13 +115,13 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     {
       node -> parent -> left = node -> left;
       node -> left -> parent = node -> parent;
-      free(node);
+      
     }
     else
     {
       node -> parent -> right = node -> left;
       node -> left -> parent = node -> parent;
-      free(node);
+      
     }
     return;
   }
@@ -131,13 +131,13 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     {
       node -> parent -> left = node -> right;
       node -> right -> parent = node -> parent;
-      free(node);
+      
     }
     else
     {
       node -> parent -> right = node -> right;
       node -> right -> parent = node -> parent;
-      free(node);
+      
     }
     return;
   } 
