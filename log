@@ -1318,3 +1318,19 @@ treemap.c:124:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 aca1573
+Fri 15 Sep 2023 05:47:10 PM UTC: 
+ treemap.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:61:19: error: implicit declaration of function ‘es_equal’; did you mean ‘is_equal’? [-Werror=implicit-function-declaration]
+   61 |         int cmp = es_equal(new_node->pair->key, current_node->pair->key);
+      |                   ^~~~~~~~
+      |                   is_equal
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:125:1: error: control reaches end of non-void function [-Werror=return-type]
+  125 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+766a44a
