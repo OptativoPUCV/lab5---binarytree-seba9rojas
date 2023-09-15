@@ -131,7 +131,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   }
   
   //CASO 3: CON DOS HIJOS O MÁS
-  TreeNode* ultimoNodo = minimum(node->righ);
+  TreeNode* ultimoNodo = minimum(node->right);
   node->pair->key = ultimoNodo->pair->key;
   node->pair->value = ultimoNodo->pair->value;
   removeNode(tree, ultimoNodo);
