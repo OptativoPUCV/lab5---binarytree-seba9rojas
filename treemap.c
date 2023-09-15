@@ -36,7 +36,7 @@ TreeNode * createTreeNode(void* key, void * value) {
 }
 
 TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
-  TreeMap* new= (TreeMap*)malloc(sizeof(TreeMap))
+  TreeMap* new= (TreeMap*)malloc(sizeof(TreeMap));
   if(new==NULL){
     return NULL;
   }
@@ -144,8 +144,6 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     return;
   } 
 }
-
-
 
 void eraseTreeMap(TreeMap * tree, void* key){
     if (tree == NULL || tree->root == NULL) return;
