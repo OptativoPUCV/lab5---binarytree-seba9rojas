@@ -136,7 +136,6 @@ void removeNode(TreeMap * tree, TreeNode* node) {
   node->pair->key = ultimoNodo->pair->key;
   node->pair->value = ultimoNodo->pair->value;
   removeNode(tree, ultimoNodo);
-    
 }
 
 
@@ -195,7 +194,17 @@ Pair* upperBound(TreeMap * tree, void* key) {
 }
   
 Pair * firstTreeMap(TreeMap * tree){
-  return NULL;
+  if(tree == NULL || tree-> root == NULL) return NULL;
+  TreeNode* actual = tree->root;
+
+  while (actual->left != NULL)
+  {
+    actual = actual->left;
+  }
+  
+  tree->current = actual;
+  
+  return actual->pair;
 }
 
 
