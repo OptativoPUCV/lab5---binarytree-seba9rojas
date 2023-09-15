@@ -92,50 +92,59 @@ TreeNode * minimum(TreeNode * x){
 }
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-  //CASO 1: NODO SIN HIJOS
-  if(node->left == NULL && node->right == NULL)
+  if (node -> left == NULL && node -> right == NULL)
   {
-    if(node->parent != NULL)
+    if (node == node -> parent -> left)
     {
-      if(node->parent->left == node)
-      {
-        node->parent->left = NULL;
-      }
-      else{
-        node->parent->right = NULL;
-      }
-    }else{
-      tree->root = NULL;
+      node -> parent -> left = NULL;
+      free(node);
     }
-    free(node);
+    else
+    {
+      node -> parent -> right = NULL;
+      free(node);
+    }
     return;
   }
-
-  //CASO 2: CON UN HIJO
-  if(node->left == NULL || node->right == NULL)
+  else if (node -> left != NULL && node -> right != NULL)
   {
-    TreeNode* aux = node->left != NULL ? node->left : node->right;
-    if(node->parent != NULL)
+    TreeNode* aux = minimum(node -> right);
+    node -> pair = aux -> pair;
+    removeNode(tree, aux);
+    return;
+  }  
+  else if (node -> left != NULL && node -> right == NULL)
+  {
+    if (node == node -> parent -> left)
     {
-      if (node->parent->left == node) {
-        node->parent->left = aux;
-      } else {
-        node->parent->right = aux;
-      }
-      aux->parent = node->parent;
-    } else {
-      tree->root = aux;
-      aux->parent = NULL;
+      node -> parent -> left = node -> left;
+      node -> left -> parent = node -> parent;
+      free(node);
     }
-    free(node);
+    else
+    {
+      node -> parent -> right = node -> left;
+      node -> left -> parent = node -> parent;
+      free(node);
+    }
     return;
   }
-  
-  //CASO 3: CON DOS HIJOS O MÁS
-  TreeNode* ultimoNodo = minimum(node->right);
-  node->pair->key = ultimoNodo->pair->key;
-  node->pair->value = ultimoNodo->pair->value;
-  removeNode(tree, ultimoNodo);
+  else
+  {
+    if (node == node -> parent -> left)
+    {
+      node -> parent -> left = node -> right;
+      node -> right -> parent = node -> parent;
+      free(node);
+    }
+    else
+    {
+      node -> parent -> right = node -> right;
+      node -> right -> parent = node -> parent;
+      free(node);
+    }
+    return;
+  } 
 }
 
 
