@@ -1350,3 +1350,21 @@ treemap.c:125:1: error: control reaches end of non-void function [-Werror=return
 cc1: all warnings being treated as errors
 Compilation failed
 7d9e6bd
+Fri 15 Sep 2023 05:49:14 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:61:19: error: too few arguments to function ‘is_equal’
+   61 |         int cmp = is_equal(new_node->pair->key, current_node->pair->key);
+      |                   ^~~~~~~~
+treemap.c:21:5: note: declared here
+   21 | int is_equal(TreeMap* tree, void* key1, void* key2){
+      |     ^~~~~~~~
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:125:1: error: control reaches end of non-void function [-Werror=return-type]
+  125 | }
+      | ^
+cc1: all warnings being treated as errors
+Compilation failed
+5c611ff
