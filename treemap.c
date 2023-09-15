@@ -224,17 +224,14 @@ Pair * nextTreeMap(TreeMap * tree) {
     }    
   }else{
     TreeNode* tata = actual->parent;
-    
     while (tata != NULL && actual == tata->right)
     {
       actual = tata;
       tata = tata->parent;
     }
-
     actual = tata;
   }
   
   tree->current = actual;
-  
-  return (actual == NULL) ? actual->pair : NULL;
+  return (actual != NULL) ? actual->pair : NULL;
 }
