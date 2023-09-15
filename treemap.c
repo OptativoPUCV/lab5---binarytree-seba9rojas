@@ -203,9 +203,9 @@ Pair * firstTreeMap(TreeMap * tree){
   if(tree == NULL || tree-> root == NULL) return NULL;
   TreeNode* actual = tree->root;
 
-  while (actual->left != NULL)
+  while (actual->left == NULL)
   {
-    actual = actu->left;
+    actual = actual->left;
   }
   tree->current = actual;
   return actual->pair;

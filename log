@@ -1832,3 +1832,9 @@ treemap.c:208:14: error: ‘actu’ undeclared (first use in this function); did
 treemap.c:208:14: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 117614a
+Fri 15 Sep 2023 08:49:00 PM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  26|2
+total_score: 55/70
+5e3a2ab
