@@ -2024,3 +2024,13 @@ Fri 15 Sep 2023 09:25:22 PM UTC:
  tests:  29|0
 total_score: 70/70
 f6f316a
+Fri 15 Sep 2023 09:26:11 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:211:3: error: expected ‘,’ or ‘;’ before ‘if’
+  211 |   if(tree -> current == NULL) return NULL;
+      |   ^~
+Compilation failed
+dc7e197

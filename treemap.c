@@ -115,13 +115,11 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     {
       node -> parent -> left = node -> left;
       node -> left -> parent = node -> parent;
-      
     }
     else
     {
       node -> parent -> right = node -> left;
       node -> left -> parent = node -> parent;
-      
     }
     return;
   }
@@ -131,13 +129,11 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     {
       node -> parent -> left = node -> right;
       node -> right -> parent = node -> parent;
-      
     }
     else
     {
       node -> parent -> right = node -> right;
       node -> right -> parent = node -> parent;
-      
     }
     return;
   } 
@@ -211,7 +207,7 @@ Pair * firstTreeMap(TreeMap * tree){
 
 
 Pair * nextTreeMap(TreeMap * tree) {
-  TreeNode * aux = tree -> current;
+  TreeNode * aux = tree -> current
   if(tree -> current == NULL) return NULL;
   if (aux -> right == NULL){
     while (aux -> parent != NULL){
