@@ -1844,3 +1844,18 @@ Fri 15 Sep 2023 08:49:38 PM UTC:
  tests:  28|1
 total_score: 60/70
 59475e4
+Fri 15 Sep 2023 08:54:16 PM UTC: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:60:9: error: ‘new’ undeclared (first use in this function)
+   60 |         new=createTreeNode(key,value);
+      |         ^~~
+treemap.c:60:9: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:51:13: error: unused variable ‘current’ [-Werror=unused-variable]
+   51 |   TreeNode* current=tree->root;
+      |             ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+f148201
