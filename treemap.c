@@ -49,53 +49,34 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-    if (tree == NULL) return;
-    
-    Pair* pair = (Pair*)malloc(sizeof(Pair));
-    if (pair == NULL) {
-        exit(1);
-    }
-    
-    pair->key = key;
-    pair->value = value;
-    
+    TreeNode * new_node = createTreeNode(key, value);
+    if (new_node == NULL) return;
     if (tree->root == NULL) {
-        TreeNode* newNode = createTreeNode(key, value);
-        tree->root = newNode;
-        tree->current = newNode;
-    } else {
-        TreeNode* currentNode = tree->root;
-        
-        while (1) {
-            if (is_equal(tree, key, currentNode->pair->key) == 1) {
-                // La clave ya existe, no hacemos nada.
-                free(pair);
+        tree->root = new_node;
+        tree->current = new_node;
+        return;
+    }
+    TreeNode * current_node = tree->root;
+    while (1) {
+        if (tree->lower_than(new_node->pair->key, current_node->pair->key)) {
+            if (current_node->left == NULL) {
+                current_node->left = new_node;
+                new_node->parent = current_node;
+                tree->current = new_node;
                 return;
             }
-            
-            int compareResult = tree->lower_than(key, currentNode->pair->key);
-            
-            if (compareResult < 0) {
-                if (currentNode->left == NULL) {
-                    TreeNode* newNode = createTreeNode(key, value);
-                    newNode->parent = currentNode;
-                    currentNode->left = newNode;
-                    tree->current = newNode;
-                    break;
-                } else {
-                    currentNode = currentNode->left;
-                }
-            } else {
-                if (currentNode->right == NULL) {
-                    TreeNode* newNode = createTreeNode(key, value);
-                    newNode->parent = currentNode;
-                    currentNode->right = newNode;
-                    tree->current = newNode;
-                    break;
-                } else {
-                    currentNode = currentNode->right;
-                }
+            current_node = current_node->left;
+        } else if (tree->lower_than(current_node->pair->key, new_node->pair->key)) {
+            if (current_node->right == NULL) {
+                current_node->right = new_node;
+                new_node->parent = current_node;
+                tree->current = new_node;
+                return;
             }
+            current_node = current_node->right;
+        } else {
+            free(new_node);
+            return;
         }
     }
 }
