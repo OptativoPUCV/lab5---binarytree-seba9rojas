@@ -100,14 +100,18 @@ Pair* upperBound(TreeMap * tree, void* key) {
 
 
 Pair * firstTreeMap(TreeMap * tree){
-  TreeNode* nodo = (TreeNode*) calloc (1, sizeof(TreeNode));
-  nodo = tree -> root;
-  if (tree == NULL || tree -> root == NULL) return NULL;
-  while (nodo -> left != NULL)
+  if(tree == NULL || tree-> root == NULL) return NULL;
+
+  TreeNode* current = tree->root;
+
+  while (current->left != NULL)
   {
-    nodo= nodo -> left;
+    current = current->left;
   }
-  return nodo -> pair;
+
+  tree->current = current;
+  
+  return current->pair;
 }
 
 
