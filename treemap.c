@@ -127,14 +127,14 @@ Pair * firstTreeMap(TreeMap * tree){
     return NULL;
   }
   
-  TreeNode* current = tree->root;
-  while (current->left != NULL)
-  {
-    current = current->left;
-  }
-  tree->current = current;
+  TreeNode* aux = tree->root;
+  tree->current=minium(aux);
   
-  return current->pair;
+  if(tree->current==NULL){
+    return NULL;
+  }
+  
+  return tree->current->pair;
 }
 
 
