@@ -49,44 +49,52 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
 
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
+    if (tree == NULL) return;
+    
     Pair* pair = (Pair*)malloc(sizeof(Pair));
     if (pair == NULL) {
         exit(1);
     }
+    
     pair->key = key;
     pair->value = value;
-
+    
     if (tree->root == NULL) {
-        struct TreeNode* newNode = createTreeNode(pair);
+        TreeNode* newNode = createTreeNode(key, value);
         tree->root = newNode;
         tree->current = newNode;
     } else {
-        struct TreeNode* currentNode = tree->root;
+        TreeNode* currentNode = tree->root;
+        
         while (1) {
-            int cmp = tree->lower_than(pair->key, currentNode->pair->key);
-            if (cmp < 0) {
+            if (is_equal(tree, key, currentNode->pair->key) == 1) {
+                // La clave ya existe, no hacemos nada.
+                free(pair);
+                return;
+            }
+            
+            int compareResult = tree->lower_than(key, currentNode->pair->key);
+            
+            if (compareResult < 0) {
                 if (currentNode->left == NULL) {
-                    struct TreeNode* newNode = createTreeNode(pair);
-                    currentNode->left = newNode;
+                    TreeNode* newNode = createTreeNode(key, value);
                     newNode->parent = currentNode;
+                    currentNode->left = newNode;
                     tree->current = newNode;
                     break;
                 } else {
                     currentNode = currentNode->left;
                 }
-            } else if (cmp > 0) {
+            } else {
                 if (currentNode->right == NULL) {
-                    struct TreeNode* newNode = createTreeNode(pair);
-                    currentNode->right = newNode;
+                    TreeNode* newNode = createTreeNode(key, value);
                     newNode->parent = currentNode;
+                    currentNode->right = newNode;
                     tree->current = newNode;
                     break;
                 } else {
                     currentNode = currentNode->right;
                 }
-            } else {
-                // La clave ya existe, no hacemos nada.
-                break;
             }
         }
     }
